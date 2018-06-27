@@ -6,7 +6,8 @@
 <section>
   <div class="lists">
     <!--Crear un for con las listas es el objetivo-->
-    <list data="list" *ngfor="let list of lists"></list>
+    <list [data]="list" *ngfor="let list of lists"></list>
+    <!--Con los [] le digo que es javascript-->
     <!--componente ngfor-->
   </div>
 

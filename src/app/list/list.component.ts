@@ -12,5 +12,10 @@ export class ListComponent implements OnInit {
   ngOnInit() {
     console.log('tonto el que lo lea');
   }
+  OnSaveNewTask(){
 
+  }
+  OnRemove(){
+    
+  }
 }

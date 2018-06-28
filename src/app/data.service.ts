@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {List} from './list.interface';
+import { removeListener } from 'cluster';
 
 @Injectable({
     providedIn: 'root'
@@ -21,14 +22,17 @@ export class DataService {
     })
     load(){
         this.lists= JSON.parse(localStorage.getItem('lists')) || [];
-    }    saveNewList(listName:string){
+    }    
+    saveNewList(listName:string){
         let newList = {
         listId: this.generateId('list'),
         name: listName,
         tasks:[]
-    }    this.lists.push(newList);
+    }   
+    this.lists.push(newList);
     this.save();
- }    saveNewTask(newTaskName:string, list:List){
+ }  
+   saveNewTask(newTaskName:string, list:List){
         let newTask={
             color :"tomato",
             completed:false,
@@ -47,10 +51,14 @@ export class DataService {
        generateId(namespace){
         return `${namespace}-${Date.now()}-${Math.round(Math.random()*100)}`
     }
-    removeList( id: string) {
-        this.lists = this.lists.filter(item => item.listId !== id);
-        this.save();
-    }
+    removeList( id: string) { 
+    let index = this.lists.findIndex( item => item.listId === id)
+    this.lists.splice(index, 1);
+    //removeList( id: string) {
+    //    this.lists = this.lists.filter(item => item.listId !== id);
+    //    this.save();
+    //}
+    this.save();
 }
 
 

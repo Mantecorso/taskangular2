@@ -63,7 +63,7 @@ export class DataService {
 
     removeTask(data:Task){
         let indexListId = this.lists.findIndex(item => item.listId === data.listId);
-        let indexTaskId = this.lists.[indexListId].findIndex(item => item.taskId === data.taskId);
+        let indexTaskId = this.lists.[indexListId].tasks.findIndex(item => item.taskId === data.taskId);
         this.lists[indexListId].tasls.splice(indexTaskId, 1);
         this.save();
     }

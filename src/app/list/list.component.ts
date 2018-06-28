@@ -16,6 +16,6 @@ export class ListComponent implements OnInit {
 
   }
   OnRemove(){
-    
+  //  this.dataService.removeTask(this.data);
   }
 }

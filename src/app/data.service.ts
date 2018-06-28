@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {List} from './list.interface';
 import { removeListener } from 'cluster';
-
+import {Task} from './task.interface';
 @Injectable({
     providedIn: 'root'
 })
@@ -59,6 +59,14 @@ export class DataService {
     //    this.save();
     //}
     this.save();
+    }
+
+    removeTask(data:Task){
+        let indexListId = this.lists.findIndex(item => item.listId === data.listId);
+        let indexTaskId = this.lists.[indexListId].findIndex(item => item.taskId === data.taskId);
+        this.lists[indexListId].tasls.splice(indexTaskId, 1);
+        this.save();
+    }
 }
 
 

@@ -43,10 +43,14 @@ export class DataService {
             return item;
         })
         this.save();
-    }            generateId(namespace){
+    }         
+       generateId(namespace){
         return `${namespace}-${Date.now()}-${Math.round(Math.random()*100)}`
-    }}
- 
+    }
+    removeList( id: string) {
+        this.lists = this.lists.filter(item => item.listId !== id);
+        this.save();
+    }
 }
 
 
